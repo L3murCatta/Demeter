@@ -1,0 +1,1 @@
+name displaymath.tex within sc print
