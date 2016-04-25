@@ -50,12 +50,27 @@ __res = ""
 """.format(filename)
 if w != -1:
     nxt = i if i > -1 else p
-    print >>tmp, """def handle_{0}(node):
+    wslicel = q[w+7:nxt].find('[')
+    if wslicel == -1:
+        print >>tmp, """def handle_{0}(node):
     global __res
-    __res += node.source
+    __res += node.source.strip()
     return u'\\n'.join(unicode(node))
 __renderer['{0}'] = handle_{0}
 """.format(q[w+8:nxt])
+    else:
+        wslicer = q[wslicel:nxt].find(']')
+        slicen = q[w+8+wslicel:wslicel+wslicer]
+        print >>tmp, """__cnt_{0} = {1}
+__cur_{0} = 0
+def handle_{0}(node):
+    global __res, __cnt_{0}, __cur_{0}
+    if __cur_{0} == __cnt_{0}:
+        __res += node.source.strip()
+    __cur_{0} += 1
+    return u'\\n'.join(unicode(node))
+__renderer['{0}'] = handle_{0}
+""".format(q[w+8:w+7+wslicel], slicen)
     #print >>tmp, q[w+1:nxt] + ':'
 ##if i != -1:
 ##    res = "" if f == -1 else "  "
