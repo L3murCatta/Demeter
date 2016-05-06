@@ -2,7 +2,7 @@
 
 Query language for LaTeX data.
 
-name <LaTeX file with extension> within <environment or command>([<number of instance>]) print
+name {LaTeX file with extension} within {environment or command}([{number of instance}]) (> {environment or command}([{number of instance}])[...] print
 
 Examples:
 
