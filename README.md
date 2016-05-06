@@ -9,3 +9,5 @@ Examples:
 name displaymath.tex within sc print
 
 name displaymath.tex within tabular[0] print
+
+name displaymath.tex within tabular[0] > ArrayRow[1] > ArrayCell[2] print
